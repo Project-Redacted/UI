@@ -21,7 +21,7 @@ public class MenuCameraMove : MonoBehaviour
        transform.position = Vector3.Lerp(transform.position, CurrentLocation.transform.position, Time.deltaTime * Speed);
        transform.rotation = Quaternion.Lerp(transform.rotation, CurrentLocation.transform.rotation, Time.deltaTime * Speed);
     }
-    
+
     public void MoveToLocation(int location)
     {
         // Set the current location to the location in the list
