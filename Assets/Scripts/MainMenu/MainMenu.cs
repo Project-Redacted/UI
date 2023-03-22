@@ -12,17 +12,17 @@ public class MainMenu : MonoBehaviour
     }
     
     // Maze size 50 by 50 tiles in size
-    public void play50()
+    public void Play35()
     {
-        Debug.Log("Load 50x50");
-        SceneManager.LoadScene("50x50");
+        Debug.Log("Load 35x35");
+        SceneManager.LoadScene("35x35");
     }
     
     // Temporary maze size 100 by 100 tiles in size
-    public void play100()
+    public void Play50()
     {
-        Debug.Log("Load 100x100");
-        SceneManager.LoadScene("100x100");
+        Debug.Log("Load 50x50");
+        SceneManager.LoadScene("50x50");
     }
     
     // This wont work until the game has been built
