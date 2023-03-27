@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MenuOptions : MonoBehaviour
 {
-    private Settings gameData;
-    void Start()
+    private void Start()
     {
-        gameData = new Settings();
-        gameData.Load();
+        Settings.LoadSettings();
     }
     
     public void DisplaySettings()
     {
-        // Display the current settings
-        Debug.Log(gameData.Data.volume);
-        Debug.Log(gameData.Data.cameraOptions["cameraSensitivity"]);
-        Debug.Log(gameData.Data.graphicsOptions["graphicsQuality"]);
+        Debug.Log("PlayerVolume: " + Settings.PlayerVolume);
     }
 }
