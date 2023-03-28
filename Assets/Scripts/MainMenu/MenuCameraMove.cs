@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuCameraMove : MonoBehaviour
 {
     public List<GameObject> Locations;
+    public List<int> LocationFOV;
     public int Speed = 1;
     public GameObject CurrentLocation;
     
@@ -20,6 +21,7 @@ public class MenuCameraMove : MonoBehaviour
     {
        transform.position = Vector3.Lerp(transform.position, CurrentLocation.transform.position, Time.deltaTime * Speed);
        transform.rotation = Quaternion.Lerp(transform.rotation, CurrentLocation.transform.rotation, Time.deltaTime * Speed);
+       Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, LocationFOV[Locations.IndexOf(CurrentLocation)], Time.deltaTime * Speed);
     }
 
     public void MoveToLocation(int location)

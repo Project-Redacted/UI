@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class MainMenu : MonoBehaviour
 {
     // Maze size 25 by 25 tiles in size
@@ -32,5 +36,4 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Game Quit");
         Application.Quit();
     }
-
 }
