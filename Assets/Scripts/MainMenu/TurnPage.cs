@@ -5,42 +5,34 @@ using UnityEngine;
 public class TurnPage : MonoBehaviour
 {
     
-    public GameObject Page;
+    public Transform Page;
     public float turnSpeed = 1f;
     private int turnDirection = 1;
     private bool isTurning = false;
     
-    private void turnLeft()
+    public void turnLeft()
     {
-        if (isTurning)
-        {
-            return;
-        }
-        isTurning = true;
-        turnDirection = -1;
+        StopAllCoroutines();
+        StartCoroutine(FlipPage(1));
     }
     
-    private void turnRight()
-    {
-        if (isTurning)
-        {
-            return;
-        }
-        isTurning = true;
-        turnDirection = 1;
+    public void turnRight()
+    { 
+        StopAllCoroutines();
+        StartCoroutine(FlipPage(-1));
     }
-    
-    void Update()
+
+    IEnumerator FlipPage(int direction)
     {
-        if (isTurning)
+        float turned = 0;
+        Page.localRotation = Quaternion.Euler(0, 0, 0);
+        while (turned < 180)
         {
-            // Rotate the page to -180 degrees if turnDirection is -1 and 0 degrees if turnDirection is 1
-            Page.transform.rotation = Quaternion.Lerp(Page.transform.rotation, Quaternion.Euler(0, turnDirection * 180, 0), turnSpeed * Time.deltaTime);
-            // If the page has rotated to -180 degrees or 0 degrees, stop rotating
-            if (Page.transform.rotation == Quaternion.Euler(0, turnDirection * 180, 0))
-            {
-                isTurning = false;
-            }
+            Page.localRotation = Quaternion.Euler(0, turned * direction, 0);
+            turned += Time.deltaTime * turnSpeed;
+            yield return null;
         }
+
+        Page.localRotation = Quaternion.Euler(0, 0, 0);
     }
 }
