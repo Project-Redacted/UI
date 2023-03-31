@@ -7,8 +7,8 @@ public class TurnPage : MonoBehaviour
     
     public Transform Page;
     public float turnSpeed = 1f;
-    private int turnDirection = 1;
-    private bool isTurning = false;
+	private int defX = 90;
+	private int defY = 180;
     
     public void turnLeft()
     {
@@ -25,14 +25,14 @@ public class TurnPage : MonoBehaviour
     IEnumerator FlipPage(int direction)
     {
         float turned = 0;
-        Page.localRotation = Quaternion.Euler(0, 0, 0);
+        Page.localRotation = Quaternion.Euler(defX, defY, 0);
         while (turned < 180)
         {
-            Page.localRotation = Quaternion.Euler(0, turned * direction, 0);
+            Page.localRotation = Quaternion.Euler(defX, defY, turned * direction);
             turned += Time.deltaTime * turnSpeed;
             yield return null;
         }
 
-        Page.localRotation = Quaternion.Euler(0, 0, 0);
+        Page.localRotation = Quaternion.Euler(defX, defY, 0);
     }
 }
