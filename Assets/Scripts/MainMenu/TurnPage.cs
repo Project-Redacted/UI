@@ -9,13 +9,13 @@ public class TurnPage : MonoBehaviour
     public float turnSpeed = 1f;
 	private int defX = 90;
 	private int defY = 180;
-    
+
     public void turnLeft()
     {
         StopAllCoroutines();
         StartCoroutine(FlipPage(1));
     }
-    
+
     public void turnRight()
     { 
         StopAllCoroutines();
