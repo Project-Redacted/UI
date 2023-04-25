@@ -8,6 +8,9 @@ public class OpenDoor : MonoBehaviour
     public float turnSpeed = 1f;
     private int defX = -90;
     private int defY = 0;
+    
+    public int openRotation = 170;
+    public int closedRotation = 90;
 
     public void openDoor()
     {
@@ -23,29 +26,29 @@ public class OpenDoor : MonoBehaviour
 
     IEnumerator FlipOpen()
     {
-        float turned = 90;
-        Door.localRotation = Quaternion.Euler(defX, defY, 90);
-        while (turned < 116)
+        float turned = closedRotation;
+        Door.localRotation = Quaternion.Euler(defX, defY, closedRotation);
+        while (turned < openRotation)
         {
             Door.localRotation = Quaternion.Euler(defX, defY, turned * 1);
             turned += Time.deltaTime * turnSpeed;
             yield return null;
         }
 
-        Door.localRotation = Quaternion.Euler(defX, defY, 116);
+        Door.localRotation = Quaternion.Euler(defX, defY, openRotation);
     }
     
     IEnumerator FlipClosed()
     {
-        float turned = 116;
-        Door.localRotation = Quaternion.Euler(defX, defY, 116);
-        while (90 < turned)
+        float turned = openRotation;
+        Door.localRotation = Quaternion.Euler(defX, defY, openRotation);
+        while (closedRotation < turned)
         {
             Door.localRotation = Quaternion.Euler(defX, defY, turned * 1);
             turned -= Time.deltaTime * turnSpeed;
             yield return null;
         }
 
-        Door.localRotation = Quaternion.Euler(defX, defY, 90);
+        Door.localRotation = Quaternion.Euler(defX, defY, closedRotation);
     }
 }
