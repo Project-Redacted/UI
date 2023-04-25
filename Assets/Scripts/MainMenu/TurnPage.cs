@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TurnPage : MonoBehaviour
 {
-    
     public Transform Page;
     public float turnSpeed = 1f;
 	private int defX = 90;
