@@ -7,27 +7,9 @@ using UnityEngine.UI;
 
 public class LoadSettings : MonoBehaviour
 {
-    public static int SettingVolume = 60;
-    public static string SettingForwards = "W";
-    public static string SettingBackwards = "S";
-    public static string SettingLeft = "A";
-    public static string SettingRight = "D";
-    public static string SettingJump = "Space";
-    public static string SettingSneak = "CTRL";
-    public static string SettingRun = "Shift";
-    public static string SettingItemPickup = "F";
-    public static string SettingItemDrop = "G";
-    public static string SettingItemUse = "E";
-    public static string SettingGamePause = "ESC";
-    public static float SettingCameraFOV = 90;
-    public static float SettingCameraMouseX = 1;
-    public static float SettingCameraMouseY = 1;
-    public static int SettingGraphicsMotionBlur = 1;
-    public static int SettingGraphicsWorldFog = 0;
-    public static int SettingGraphicsResolution = 0;
-    public static int SettingGraphicsFullscreen = 0;
-    
+    // Set UI elements
     public Slider UIVolume;
+    
     public TMP_InputField UIForwards;
     public TMP_InputField UIBackwards;
     public TMP_InputField UILeft;
@@ -39,46 +21,50 @@ public class LoadSettings : MonoBehaviour
     public TMP_InputField UIItemDrop;
     public TMP_InputField UIItemUse;
     public TMP_InputField UIGamePause;
-    public Slider UICameraFOV;
     public Slider UICameraMouseX;
     public Slider UICameraMouseY;
-    public Toggle UIMotionBlur;
-    public Toggle UIWorldFog;
+    
+    public Slider UICameraFOV;
     public TMP_Dropdown UIResolution;
     public Toggle UIFullscreen;
+    
+    public Toggle UIMotionBlur;
+    public Toggle UIWorldFog;
 
-    void Start()
-    {   
-        // Genuinely the worst code I have ever written
-        if (PlayerPrefs.HasKey("volume")) { SettingVolume = PlayerPrefs.GetInt("volume"); }
+    void Awake()
+    {
+        // Set default values
+        int settingVolume = PlayerPrefs.HasKey("volume") ? PlayerPrefs.GetInt("volume") : 60;
         
-        if (PlayerPrefs.HasKey("playerForwards")) { SettingForwards = PlayerPrefs.GetString("playerForwards"); }
-        if (PlayerPrefs.HasKey("playerBackwards")) { SettingBackwards = PlayerPrefs.GetString("playerBackwards"); }
-        if (PlayerPrefs.HasKey("playerLeft")) { SettingLeft = PlayerPrefs.GetString("playerLeft"); }
-        if (PlayerPrefs.HasKey("playerRight")) { SettingRight = PlayerPrefs.GetString("playerRight"); }
-        if (PlayerPrefs.HasKey("playerJump")) { SettingJump = PlayerPrefs.GetString("playerJump"); }
-        if (PlayerPrefs.HasKey("playerSneak")) { SettingSneak = PlayerPrefs.GetString("playerSneak"); }
-        if (PlayerPrefs.HasKey("playerRun")) { SettingRun = PlayerPrefs.GetString("playerRun"); }
-        if (PlayerPrefs.HasKey("itemPickup")) { SettingItemPickup = PlayerPrefs.GetString("itemPickup"); }
-        if (PlayerPrefs.HasKey("itemDrop")) { SettingItemDrop = PlayerPrefs.GetString("itemDrop"); }
-        if (PlayerPrefs.HasKey("itemUse")) { SettingItemUse = PlayerPrefs.GetString("itemUse"); }
-        if (PlayerPrefs.HasKey("gamePause")) { SettingGamePause = PlayerPrefs.GetString("gamePause"); }
+        string settingForwards = PlayerPrefs.HasKey("playerForwards") ? PlayerPrefs.GetString("playerForwards") : "W";
+        string settingBackwards = PlayerPrefs.HasKey("playerBackwards") ? PlayerPrefs.GetString("playerBackwards") : "S";
+        string settingLeft = PlayerPrefs.HasKey("playerLeft") ? PlayerPrefs.GetString("playerLeft") : "A";
+        string settingRight = PlayerPrefs.HasKey("playerRight") ? PlayerPrefs.GetString("playerRight") : "D";
+        string settingJump = PlayerPrefs.HasKey("playerJump") ? PlayerPrefs.GetString("playerJump") : "Space";
+        string settingSneak = PlayerPrefs.HasKey("playerSneak") ? PlayerPrefs.GetString("playerSneak") : "Ctrl";
+        string settingRun = PlayerPrefs.HasKey("playerRun") ? PlayerPrefs.GetString("playerRun") : "Shift";
+        string settingItemPickup = PlayerPrefs.HasKey("itemPickup") ? PlayerPrefs.GetString("itemPickup") : "F";
+        string settingItemDrop = PlayerPrefs.HasKey("itemDrop") ? PlayerPrefs.GetString("itemDrop") : "G";
+        string settingItemUse = PlayerPrefs.HasKey("itemUse") ? PlayerPrefs.GetString("itemUse") : "E";
+        string settingGamePause = PlayerPrefs.HasKey("gamePause") ? PlayerPrefs.GetString("gamePause") : "Escape";
+        float settingCameraMouseX = PlayerPrefs.HasKey("cameraMouseX") ? PlayerPrefs.GetFloat("cameraMouseX") : 1;
+        float settingCameraMouseY = PlayerPrefs.HasKey("cameraMouseY") ? PlayerPrefs.GetFloat("cameraMouseY") : 1;
         
-        if (PlayerPrefs.HasKey("cameraFOV")) { SettingCameraFOV = PlayerPrefs.GetFloat("cameraFOV"); }
-        if (PlayerPrefs.HasKey("cameraMouseX")) { SettingCameraMouseX = PlayerPrefs.GetFloat("cameraMouseX"); }
-        if (PlayerPrefs.HasKey("cameraMouseY")) { SettingCameraMouseY = PlayerPrefs.GetFloat("cameraMouseY"); }
-        if (PlayerPrefs.HasKey("graphicsMotionBlur")) { SettingGraphicsMotionBlur = PlayerPrefs.GetInt("graphicsMotionBlur"); }
-        if (PlayerPrefs.HasKey("graphicsWorldFog")) { SettingGraphicsWorldFog = PlayerPrefs.GetInt("graphicsWorldFog"); }
+        float settingCameraFOV = PlayerPrefs.HasKey("cameraFOV") ? PlayerPrefs.GetFloat("cameraFOV") : 90;
+        int settingGraphicsResolution = PlayerPrefs.HasKey("graphicsResolution") ? PlayerPrefs.GetInt("graphicsResolution") : 0;
+        int settingGraphicsFullscreen = PlayerPrefs.HasKey("graphicsFullscreen") ? PlayerPrefs.GetInt("graphicsFullscreen") : 1;
+        
+        int settingGraphicsMotionBlur = PlayerPrefs.HasKey("graphicsMotionBlur") ? PlayerPrefs.GetInt("graphicsMotionBlur") : 1;
+        int settingGraphicsWorldFog = PlayerPrefs.HasKey("graphicsWorldFog") ? PlayerPrefs.GetInt("graphicsWorldFog") : 0;
 
-        if (PlayerPrefs.HasKey("graphicsResolution")) { SettingGraphicsResolution = PlayerPrefs.GetInt("graphicsResolution"); }
-
-        if (PlayerPrefs.HasKey("graphicsFullscreen")) { SettingGraphicsFullscreen = PlayerPrefs.GetInt("graphicsFullscreen"); }
-        
-        
+        // Set UI elements
         // Set volume
-        UIVolume.value = SettingVolume;
-        AudioListener.volume = SettingVolume / 100f;
-        
+        UIVolume.value = settingVolume;
+        AudioListener.volume = settingVolume / 100f;
+
+        // Set FOV
+        UICameraFOV.value = settingCameraFOV;
+
         // Set available resolutions in dropdown, set current resolution
         UIResolution.ClearOptions();
         List<string> options = new List<string>();
@@ -87,10 +73,10 @@ public class LoadSettings : MonoBehaviour
             options.Add(resolution.width + "x" + resolution.height);
         }
         UIResolution.AddOptions(options);
-        UIResolution.value = SettingGraphicsResolution;
+        UIResolution.value = settingGraphicsResolution;
         
         // Set fullscreen
-        if (SettingGraphicsFullscreen == 1)
+        if (settingGraphicsFullscreen == 1)
         {
             UIFullscreen.isOn = true;
             Screen.fullScreen = true;
@@ -100,5 +86,9 @@ public class LoadSettings : MonoBehaviour
             UIFullscreen.isOn = false;
             Screen.fullScreen = false;
         }
+        
+        // Set motion blur
+        UIMotionBlur.isOn = settingGraphicsMotionBlur == 1;
+        UIWorldFog.isOn = settingGraphicsWorldFog == 1;
     }
 }
