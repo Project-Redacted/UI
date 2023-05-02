@@ -639,7 +639,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8c22adaf7df15f548a54e7edcd6dfa92, type: 2}
+      objectReference: {fileID: 2100000, guid: 4237b7b52aa720c43b4754e6e13a480b, type: 2}
     - target: {fileID: -5477749408508380018, guid: 7439ba3a73b199441976542f14543816,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7439ba3a73b199441976542f14543816,
         type: 3}
       propertyPath: m_Name
-      value: paper note (3)
+      value: back note
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -12217,6 +12217,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: 7439ba3a73b199441976542f14543816,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4237b7b52aa720c43b4754e6e13a480b, type: 2}
     - target: {fileID: 919132149155446097, guid: 7439ba3a73b199441976542f14543816,
         type: 3}
       propertyPath: m_Name
@@ -12590,7 +12595,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493312853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -18968,7 +18973,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59e24a5d8f22dae459d7d3eb374488a3, type: 2}
   m_sharedMaterial: {fileID: 5584009992615818894, guid: 59e24a5d8f22dae459d7d3eb374488a3,
